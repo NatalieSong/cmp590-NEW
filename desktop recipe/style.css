@@ -1,0 +1,95 @@
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;  
+  
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  
+  font-weight: normal;
+}
+
+.wrapper > * {
+  padding: 20px;
+  flex: 1 100%;
+}
+
+
+body {
+    background-color: #C2936B; 
+    margin: 5em;  
+    padding: 20px;
+}
+
+h2 {
+    background-color: white;
+    font-family: Lucida Fax Demibold, sans-serif;
+    text-align:left;
+    color: #590A00;
+    margin: 0;
+    padding: 1em;
+    border-bottom: double 6px #C2936B; 
+
+}
+
+.recipe_header {
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #590A00;
+    margin:0;
+    padding: 0.5em 0;
+}
+
+.ingredients {
+    background-color: white;
+    text-align: left;
+    flex: 1.5;
+}
+
+
+.quantity {
+    color: #590A00;
+;
+}
+
+.item {
+    color: #C2936B;
+}
+.instructions {
+ background-color: white;
+ text-align: left;
+ flex: 2;
+    
+
+}
+
+h3 {
+text-align: center;
+}
+
+
+}
+
+.main > div {
+    padding: 20px;
+}
+
+
+@media all and (min-width: 600px) {
+
+}
+
+@media all and (min-width: 800px) {
+ 
+}
+
+@media all and (min-width: 1400px) {
+    .main {
+    display: flex;
+}
