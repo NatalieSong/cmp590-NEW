@@ -1,48 +1,44 @@
 .wrapper {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;  
-  
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  
-  font-weight: normal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    font-weight: normal;
 }
 
 .wrapper > * {
-  padding: 20px;
-  flex: 1 100%;
+    padding: 0px;
+    flex: 1 100%;
 }
 
-
 body {
-    background-color: #C2936B; 
-    margin: 5em;  
-    padding: 20px;
+    background-color: #C2936B;
+    margin: 5em;
+    padding: 0px;
 }
 
 h2 {
     background-color: white;
     font-family: Lucida Fax Demibold, sans-serif;
-    text-align:left;
+    text-align: left;
     color: #590A00;
     margin: 0;
     padding: 1em;
-    border-bottom: double 6px #C2936B; 
-
+    border-bottom: double 6px #C2936B;
 }
 
 .recipe_header {
     background-color: white;
     text-align: center;
-    padding: 20px;
+    padding: 2px;
 }
 
 h1 {
     color: #590A00;
-    margin:0;
+    margin: 0;
     padding: 0.5em 0;
 }
 
@@ -52,45 +48,104 @@ h1 {
     flex: 1.5;
 }
 
-
 .quantity {
     color: #590A00;
-;
+    ;
 }
 
 .item {
     color: #C2936B;
 }
-.instructions {
- background-color: white;
- text-align: left;
- flex: 2;
-    
 
+.instructions {
+    background-color: white;
+    text-align: left;
+    flex: 2;
+    padding-right: 2em; 
 }
 
 h3 {
-text-align: center;
-}
-
-.main {
-    display: flex;
-
-}
-
-.main > div {
-    padding: 20px;
+    text-align: center;
 }
 
 
-@media all and (min-width: 600px) {
 
+/*==========================================flexbox===================================*/
+.main {display: flex;}
+.ingredients {flex: 1;}
+.instructions {flex: 2;}
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+/* Mobile */
+
+@media only screen and (min-width: 400px) {
+ .main {flex-direction: column;}  
 }
 
-@media all and (min-width: 800px) {
- 
+@media only screen and (min-width: 768px) {
+ .main {flex-direction: row;}
+ .ingredients {flex: 1;}
+ .instructions {flex: 1;}
 }
 
-@media all and (min-width: 1400px) {
+@media only screen and (min-width: 1140px) {
+ .main {flex-direction: row;}
+ .ingredients {flex: 1;}
+ .instructions {flex: 2;}
     
 }
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent;
+        color: #000 ;
+        box-shadow: none;
+        text-shadow: none;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    img {
+        max-width: 100% !important;
+    }
+    @page {
+        margin: 0.5cm;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
