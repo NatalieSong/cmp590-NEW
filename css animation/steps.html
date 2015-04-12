@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+                <script src="js/vendor/velocity.js"></script>
+        <style>
+            #maze { position: relative; margin: 2em auto; width: 162px; height: 162px; background: url("img/maze.png"); }
+        .mouse {
+            top: 3px;
+            left: 67px;
+            width: 12px;
+            height: 12px;
+            background: red;
+            border-radius: 50%;
+            position: inherit;
+        }            
+        </style>
+        <script type="text/javascript">
+        
+        var currentStep = 0;
+        var ms = 250;
+        var steps = [
+            {top: "3px", left: "67px", duration: 5},
+            {top: "3px", left: "147px", duration: 5},
+            {top: "17px", left: "147px", duration: 1}, 
+            {top: "17px", left: "131px", duration: 1},
+            {top: "35px", left: "131px", duration: 1},
+            {top: "35px", left: "147px", duration: 1},
+            {top: "52px", left: "147px", duration: 1},
+            {top: "52px", left: "115px", duration: 3},
+            {top: "35px", left: "115px", duration: 1},
+            {top: "35px", left: "100px", duration: 1},
+            {top: "20px", left: "100px", duration: 1},
+            {top: "20px", left: "85px", duration: 1},
+            {top: "20px", left: "83px", duration: 1},
+            {top: "99px", left: "83px", duration: 5},
+            {top: "99px", left: "99px", duration: 1},
+            {top: "115px", left: "99px", duration: 1},
+            {top: "115px", left: "131px", duration: 2},
+            {top: "130px", left: "131px", duration: 1},
+            {top: "130px", left: "83px", duration: 4},
+            {top: "150px", left: "83px", duration: 1} 
+        ];
+        
+        function moveStep(i) {
+            $(".mouse").velocity({ 
+                top: steps[i].top,    
+                left: steps[i].left,
+            },{ 
+                duration: steps[i].duration*ms
+            }); 
+        }
+            
+        function incrementStep(x){
+            currentStep+=x;
+            //Rotate index to remain within steps.
+            if(currentStep >= steps.length) {
+                currentStep = 0;   
+            }
+            else if ( currentStep < 0) {
+                currentStep = steps.length-1;   
+            }
+        }
+        
+        var ms = 250;
+        $(document).ready(function(){
+            //next and previous buttons
+            $("#next").click( function(){
+                incrementStep(1);
+                moveStep(currentStep);
+            });
+            $("#prev").click(function(){
+                incrementStep(-1);
+                moveStep(currentStep);
+            });
+            
+            /*            
+            $(".mouse").velocity({ 
+                top: "3px",    
+                left: "147px",
+            },{ 
+                duration: 5*ms
+            })
+            .velocity({ 
+                top: "17px",    
+                left: "147px",
+            },{ 
+                duration: ms
+            })
+            .velocity({ 
+                top: "17px",    
+                left: "131px",
+            },{ 
+                duration: ms
+            })
+            .velocity({ 
+                top: "35px",    
+                left: "131px",
+            },{ 
+                duration: ms
+            })
+             .velocity({ 
+                top: "35px",    
+                left: "147px",
+            },{ 
+                duration: ms
+            })
+             .velocity({ 
+                top: "52px",    
+                left: "147px",
+            },{ 
+                duration: ms
+            })
+             .velocity({ 
+                top: "52px",    
+                left: "115px",
+            },{ 
+                duration: 3*ms
+            })
+            .velocity({ 
+                top: "35px",    
+                left: "115px",
+            },{ 
+                duration: ms
+            })
+            .velocity({
+                top: "35px",    
+                left: "100px",
+            },{ 
+                duration: ms
+            })
+            .velocity({
+                top: "20px",    
+                left: "100px",
+            },{ 
+                duration: ms
+            })
+            .velocity({
+                top: "20px",    
+                left: "85px",
+            },{ 
+                duration: ms
+            })
+            .velocity({
+                top: "20px",    
+                left: "83px",
+            },{ 
+                duration: ms
+            })
+            .velocity({
+                top: "99px",    
+                left: "83px",
+            },{ 
+                duration: 5*ms
+            })
+            .velocity({
+                top: "99px",    
+                left: "99px",
+            },{ 
+                duration: ms
+            })
+            .velocity({
+                top: "115px",    
+                left: "99px",
+            },{ 
+                duration: ms
+            })
+            .velocity({
+                top: "115px",    
+                left: "131px",
+            },{ 
+                duration: 2*ms
+            })
+            .velocity({
+                top: "130px",    
+                left: "131px",
+            },{ 
+                duration: ms
+            })
+             .velocity({
+                top: "130px",    
+                left: "83px",
+            },{ 
+                duration: 4*ms
+            })
+            .velocity({
+                top: "150px",    
+                left: "83px",
+            },{ 
+                duration: ms
+            })
+            
+            ;*/
+            
+
+        });
+        
+        </script>
+
+    </head>
+    <body>
+
+<div id="maze">
+        <div class="mouse"></div>
+        </div>
+        <button id="prev">Previous</button> 
+        <button id="next">Next</button> 
+        
+        <script>
+            
+            //counter
+            var step = 0;
+
+            
+            //make stop and 0 and not go over the # of steps in your animation
+            function move(dir){
+            var dir;
+            if (dir == "next" && step <= 11){
+                step++;
+                console.log(step);
+            } 
+            if (dir == "prev" && step >= 1) {
+                step--;
+                console.log(step);
+            }
+            }
+            
+
+            
+        </script>
+
+    </body>
+</html>

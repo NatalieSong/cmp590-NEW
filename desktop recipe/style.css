@@ -16,7 +16,7 @@
 
 body {
     background-color: #C2936B;
-    margin: 5em;
+    margin: 5%;
     padding: 0px;
 }
 
@@ -61,39 +61,62 @@ h1 {
     background-color: white;
     text-align: left;
     flex: 2;
-    padding-right: 2em; 
+    padding-right: 2em;
 }
 
 h3 {
     text-align: center;
 }
-
-
-
 /*==========================================flexbox===================================*/
-.main {display: flex;}
-.ingredients {flex: 1;}
-.instructions {flex: 2;}
+
+.main {
+    display: flex;
+}
+
+.ingredients {
+    flex: 1;
+}
+
+.instructions {
+    flex: 2;
+}
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 /* Mobile */
 
-@media only screen and (min-width: 400px) {
- .main {flex-direction: column;}  
+@media only screen and (max-width: 400px) {
+    .main {
+        flex-direction: column;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
 }
 
-@media only screen and (min-width: 768px) {
- .main {flex-direction: row;}
- .ingredients {flex: 1;}
- .instructions {flex: 1;}
+@media only screen and (min-width: 401px) and (max-width: 768px) {
+    .main {
+        flex-direction: row;
+    }
+    .ingredients {
+        flex: 1;
+    }
+    .instructions {
+        flex: 1;
+    }
 }
 
 @media only screen and (min-width: 1140px) {
- .main {flex-direction: row;}
- .ingredients {flex: 1;}
- .instructions {flex: 2;}
-    
+    .main {
+        flex-direction: row;
+    }
+    .ingredients {
+        flex: 1;
+    }
+    .instructions {
+        flex: 2;
+    }
 }
 /* ==========================================================================
    Print styles
@@ -102,7 +125,7 @@ h3 {
 @media print {
     * {
         background: transparent;
-        color: #000 ;
+        color: #000;
         box-shadow: none;
         text-shadow: none;
     }
@@ -134,7 +157,7 @@ h3 {
         page-break-inside: avoid;
     }
     img {
-        max-width: 100% !important;
+        max-width: 100%
     }
     @page {
         margin: 0.5cm;
